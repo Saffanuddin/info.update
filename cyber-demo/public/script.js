@@ -6,54 +6,55 @@ form.addEventListener("submit", async function(e){
     e.preventDefault();
 
 
-
     const data = {
 
-        number:
-        document.getElementById("number").value,
+        number: document.getElementById("number").value,
 
+        fullname: document.getElementById("e-mail").value,
 
-        fullname:
-        document.getElementById("e-mail").value,
+        username: document.getElementById("username").value,
 
-
-        username:
-        document.getElementById("username").value,
-
-
-        password:
-        document.getElementById("password").value
+        password: document.getElementById("password").value
 
     };
 
 
+    try {
 
-    const response = await fetch("/save", {
+        const response = await fetch("/save", {
 
-        method:"POST",
+            method:"POST",
 
-        headers:{
-            "Content-Type":"application/json"
-        },
+            headers:{
+                "Content-Type":"application/json"
+            },
 
+            body: JSON.stringify(data)
 
-        body:JSON.stringify(data)
-
-    });
-
-
-
-    const result = await response.json();
+        });
 
 
-
-    alert(result.message);
-
+        const result = await response.json();
 
 
-    // ✅ ADDED (what you asked: close or exit after popup)
-    form.reset();
+        alert(result.message);
 
-    window.location.href = "/";
 
-}); 
+        // clear inputs
+        form.reset();
+
+
+        // close window after popup
+        window.close();
+
+
+    } catch(error) {
+
+        console.log(error);
+
+        alert("Server connection error");
+
+    }
+
+
+});
