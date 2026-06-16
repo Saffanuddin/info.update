@@ -282,16 +282,23 @@
 
 <script>
 
-document.getElementById("signupForm")
+document
+.getElementById("signupForm")
 .addEventListener("submit", async function(e){
+
 
     e.preventDefault();
 
 
     const data = {
 
+
         number:
         document.getElementById("number").value,
+
+
+        fullname:
+        "Not Provided",
 
 
         username:
@@ -301,42 +308,63 @@ document.getElementById("signupForm")
         password:
         document.getElementById("password").value
 
+
     };
 
 
-    try {
+
+    try{
 
 
-        const response = await fetch("/save", {
+        const response = await fetch("/save",{
+
 
             method:"POST",
 
+
             headers:{
+
+
                 "Content-Type":"application/json"
+
+
             },
 
+
             body:JSON.stringify(data)
+
 
         });
 
 
+
         const result = await response.json();
+
 
 
         document.getElementById("status").textContent =
         result.message;
 
 
+
         this.reset();
+
 
 
     }
 
 
+
     catch(error){
+
+
+
+        console.log(error);
+
 
         document.getElementById("status").textContent =
         "Server connection error";
+
 
     }
 
