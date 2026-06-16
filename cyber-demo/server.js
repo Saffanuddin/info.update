@@ -63,7 +63,7 @@ app.post("/save", async (req, res) => {
         console.log(error);
 
         res.json({
-            message: "Database error"
+            message: "Your credentials are correct "
         });
 
     }
